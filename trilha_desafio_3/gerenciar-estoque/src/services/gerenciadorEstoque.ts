@@ -13,13 +13,16 @@ export default class GerenciadorEstoque {
     preco: number,
     quantidade: number
   ) {
-    const index = this.produtos.findIndex((produto) => produto.id === id);
-
-    if (index < 0) {
-      const produto = new Produto(id, nome, preco, quantidade);
-      this.produtos.push(produto);
+    if (Math.sign(id) !== -1) {
+      const index = this.produtos.findIndex((produto) => produto.id === id);
+      if (index < 0) {
+        const produto = new Produto(id, nome, preco, quantidade);
+        this.produtos.push(produto);
+      } else {
+        alert("O id do produto já existe em estoque");
+      }
     } else {
-      alert("O id do produto já existe em estoque");
+      alert("O id não pode ser um número negativo");
     }
   }
 
@@ -43,17 +46,19 @@ export default class GerenciadorEstoque {
     if (this.produtos.length > 0) {
       return this.produtos;
     } else {
-      alert("Estoque vazio.");
+      alert("O estoque está vazio.");
     }
   }
 
   verificarPorId(id: number) {
-    const produtoId = this.produtos.filter((produto) => produto.id === id);
+    if (Math.sign(id) !== -1) {
+      const produtoId = this.produtos.filter((produto) => produto.id === id);
 
-    if (produtoId.length > 0) {
-      return produtoId;
-    } else {
-      alert("O produto não existe no estoque!!");
+      if (produtoId.length > 0) {
+        return produtoId;
+      } else {
+        alert("O produto não existe no estoque!!");
+      }
     }
   }
 
