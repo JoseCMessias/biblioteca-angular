@@ -19,7 +19,7 @@ export default class GerenciadorEstoque {
       const produto = new Produto(id, nome, preco, quantidade);
       this.produtos.push(produto);
     } else {
-      console.log("O id do produto já existe em estoque");
+      alert("O id do produto já existe em estoque");
     }
   }
 
@@ -35,7 +35,7 @@ export default class GerenciadorEstoque {
       this.produtos[index].preco = preco;
       this.produtos[index].quantidade = quantidade;
     } else {
-      return "O id produto não existe";
+      alert("O id produto não existe");
     }
   }
 
@@ -43,7 +43,7 @@ export default class GerenciadorEstoque {
     if (this.produtos.length > 0) {
       return this.produtos;
     } else {
-      return "Estoque vazio.";
+      alert("Estoque vazio.");
     }
   }
 
@@ -53,7 +53,7 @@ export default class GerenciadorEstoque {
     if (produtoId.length > 0) {
       return produtoId;
     } else {
-      return "O produto não existe no estoque!!";
+      alert("O produto não existe no estoque!!");
     }
   }
 

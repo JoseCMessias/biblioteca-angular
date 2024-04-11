@@ -7,7 +7,7 @@ export default class Produto {
   constructor(id: number, nome: string, preco: number, quantidade: number) {
     this.id = id;
     this.nome = nome;
-    this.preco = preco;
+    this.preco = preco; 
     this.quantidade = quantidade;
   }
 }
