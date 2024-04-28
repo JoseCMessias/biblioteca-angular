@@ -1,4 +1,4 @@
-const autorService = require('../server/autorServer');
+const autorService = require('../services/autorService');
 
 const getAllAuthor = async (req, res) => {
     const autore = await autorService.getAllAuthor();

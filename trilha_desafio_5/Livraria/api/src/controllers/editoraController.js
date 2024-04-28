@@ -1,4 +1,4 @@
-const editoraService = require('../server/editoraService');
+const editoraService = require('../services/editoraService');
 
 const getAllEditora = async (req, res) => {
     const editoras = await editoraService.getAllEditora();
