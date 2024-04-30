@@ -1,4 +1,4 @@
-const connection = require('../config/connection');
+import connection from '../config/connection.js';
 
 const getAllAuthor = async () => {
     const authors = await connection.connect();
@@ -34,7 +34,7 @@ const deleteAuthor = async (id) => {
     await delete_author.query(sql, [id]);
 }
 
-module.exports = {
+export default {
     getAllAuthor,
     getIdAuthor,
     postAuthor,

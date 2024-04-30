@@ -1,4 +1,4 @@
-const connection = require('../config/connection');
+import connection from '../config/connection.js';
 
 const getAllLivro = async () => {
     const livro = await connection.connect();
@@ -34,7 +34,7 @@ const deleteLivro = async (id) => {
     await delete_livro.query(sql, [id]);
 }
 
-module.exports = {
+export default {
     getAllLivro,
     getIdLivro,
     postLivro,

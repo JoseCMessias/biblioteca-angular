@@ -1,14 +1,14 @@
-const express = require("express");
+import Router from "express";
 
-const router = express.Router();
+const router = Router();
 
-const autorController = require("../controllers/autorController");
-const editoraController = require("../controllers/editoraController");
-const livroController = require("../controllers/livroController");
+import autorController from "../controllers/autorController.js";
+import editoraController from "../controllers/editoraController.js";
+import livroController from "../controllers/livroController.js";
 
 router.get("/", (req, res) => {
   res.json({
-    message: "Aaah muleque...",
+    message: "Servidor rodando...",
   });
 });
 
@@ -30,4 +30,4 @@ router.post("/livros", livroController.postLivro);
 router.patch("/livro/:id", livroController.patchLivro);
 router.delete("/livro/:id", livroController.deleteLivro);
 
-module.exports = router;
+export default router;

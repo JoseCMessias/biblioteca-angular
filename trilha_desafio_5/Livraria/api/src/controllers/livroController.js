@@ -1,4 +1,4 @@
-const livroService = require('../services/livroService');
+import livroService from '../services/livroService.js';
 
 const getAllLivro = async (req, res) => {
     const livro = await livroService.getAllLivro();
@@ -25,7 +25,7 @@ const deleteLivro = async (req, res) => {
     return res.sendStatus(204);
 }
 
-module.exports = {
+export default {
     getAllLivro,
     getIdLivro,
     postLivro,

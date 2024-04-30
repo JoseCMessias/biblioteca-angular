@@ -1,4 +1,4 @@
-const autorService = require('../services/autorService');
+import autorService from '../services/autorService.js';
 
 const getAllAuthor = async (req, res) => {
     const autore = await autorService.getAllAuthor();
@@ -25,7 +25,7 @@ const deleteAuthor = async (req, res) => {
     return res.sendStatus(204);
 }
 
-module.exports = {
+export default {
     getAllAuthor,
     getIdAuthor,
     postAuthor,

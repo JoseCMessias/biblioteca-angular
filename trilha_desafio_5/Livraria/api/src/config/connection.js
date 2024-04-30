@@ -1,8 +1,7 @@
-require('dotenv').config();
+import 'dotenv/config'
+import pg from 'pg';
 
-const { Pool } = require('pg');
-
-const connection = new Pool({
+const connection = new pg.Pool({
   connectionString: process.env.CONNECTION_STRING,
 });
 
@@ -14,4 +13,4 @@ const connection = new Pool({
 //   port: process.env.DB_PORT, 
 // });
 
-module.exports = connection;
+export default connection;

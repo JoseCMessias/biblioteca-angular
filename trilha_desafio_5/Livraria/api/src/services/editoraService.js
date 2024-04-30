@@ -1,4 +1,4 @@
-const connection = require('../config/connection');
+import connection from '../config/connection.js';
 
 const getAllEditora = async () => {
     const editora = await connection.connect();
@@ -34,7 +34,7 @@ const deleteEditora = async (id) => {
     await delete_editora.query(sql, [id]);
 }
 
-module.exports = {
+export default {
     getAllEditora,
     getIdEditora,
     postEditora,

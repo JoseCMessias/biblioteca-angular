@@ -1,4 +1,5 @@
-const editoraService = require('../services/editoraService');
+
+import editoraService from '../services/editoraService.js';
 
 const getAllEditora = async (req, res) => {
     const editoras = await editoraService.getAllEditora();
@@ -25,7 +26,7 @@ const deleteEditora = async (req, res) => {
     return res.sendStatus(204);
 }
 
-module.exports = {
+export default {
     getAllEditora,
     getIdEditora,
     postEditora,
