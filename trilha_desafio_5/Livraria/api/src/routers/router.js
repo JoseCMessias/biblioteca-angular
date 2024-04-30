@@ -1,10 +1,9 @@
 import Router from "express";
-
-const router = Router();
-
 import autorController from "../controllers/autorController.js";
 import editoraController from "../controllers/editoraController.js";
 import livroController from "../controllers/livroController.js";
+
+const router = Router();
 
 router.get("/", (req, res) => {
   res.json({
@@ -12,22 +11,37 @@ router.get("/", (req, res) => {
   });
 });
 
-router.get("/autores", autorController.getAllAuthor);
-router.get("/autore/:id", autorController.getIdAuthor);
-router.post("/autores", autorController.postAuthor);
-router.patch("/autore/:id", autorController.patchAuthor);
-router.delete("/autore/:id", autorController.deleteAuthor);
+router
+  .route("/autores")
+  .get(autorController.getAllAuthor)
+  .post(autorController.postAuthor);
 
-router.get("/editoras", editoraController.getAllEditora);
-router.get("/editora/:id", editoraController.getIdEditora);
-router.post("/editoras", editoraController.postEditora);
-router.patch("/editora/:id", editoraController.patchEditora);
-router.delete("/editora/:id", editoraController.deleteEditora);
+router
+  .route("/autor/:id")
+  .get(autorController.getIdAuthor)
+  .patch(autorController.patchAuthor)
+  .delete(autorController.deleteAuthor);
 
-router.get("/livros", livroController.getAllLivro);
-router.get("/livro/:id", livroController.getIdLivro);
-router.post("/livros", livroController.postLivro);
-router.patch("/livro/:id", livroController.patchLivro);
-router.delete("/livro/:id", livroController.deleteLivro);
+router
+  .route("/editoras")
+  .get(editoraController.getAllEditora)
+  .post(editoraController.postEditora);
+
+router
+  .route("/editora/:id")
+  .get(editoraController.getIdEditora)
+  .patch(editoraController.patchEditora)
+  .delete(editoraController.deleteEditora);
+
+router
+  .route("/livros")
+  .get(livroController.getAllLivro)
+  .post(livroController.postLivro);
+
+router
+  .route("/livro/:id")
+  .get(livroController.getIdLivro)
+  .patch(livroController.patchLivro)
+  .delete(livroController.deleteLivro);
 
 export default router;

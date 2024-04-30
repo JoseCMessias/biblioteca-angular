@@ -7,8 +7,8 @@ const getAllEditora = async (req, res) => {
 }
 
 const getIdEditora = async (req, res) => {
-    const editorass = await editoraService.getIdEditora(req.params.id);
-    return res.json(editorass);
+    const editora = await editoraService.getIdEditora(req.params.id);
+    return res.json(editora);
 }
 
 const postEditora = async (req, res) => {
