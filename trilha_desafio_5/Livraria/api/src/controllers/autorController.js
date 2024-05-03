@@ -6,8 +6,17 @@ const getAllAuthor = async (req, res) => {
 };
 
 const getIdAuthor = async (req, res) => {
-  const autores = await autorService.getIdAuthor(req.params.id);
-  return res.json(autores);
+  try {
+    const autor = await autorService.getIdAuthor(req.params.id);
+
+    if (!autor) {
+      return res.status(404).json({ message: "Autor não encontrado." });
+    }
+    return res.status(200).json(autor);
+    
+  } catch (error) {
+    return res.status(500).json({ message: "Ocorreu um erro ao buscar o autor." });
+  }
 };
 
 const postAuthor = async (req, res) => {

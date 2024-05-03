@@ -11,7 +11,7 @@ const getIdLivro = async (id) => {
   const livro = await connection.connect();
   const sql = "SELECT * FROM livros WHERE livro_id=$1";
   const res = await livro.query(sql, [id]);
-  return res.rows;
+  return res.rows[0];
 };
 
 const postLivro = async (livro) => {

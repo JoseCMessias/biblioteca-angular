@@ -11,7 +11,7 @@ const getIdAuthor = async (id) => {
   const author = await connection.connect();
   const sql = "SELECT * FROM autores WHERE autor_id=$1";
   const res = await author.query(sql, [id]);
-  return res.rows;
+  return res.rows[0];
 };
 
 const postAuthor = async (author) => {

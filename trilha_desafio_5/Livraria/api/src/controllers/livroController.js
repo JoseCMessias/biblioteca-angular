@@ -6,8 +6,17 @@ const getAllLivro = async (req, res) => {
 };
 
 const getIdLivro = async (req, res) => {
-  const livro = await livroService.getIdLivro(req.params.id);
-  return res.json(livro);
+  try {
+    const livro = await livroService.getIdLivro(req.params.id);
+
+    if (!livro) {
+      return res.status(404).json({ message: "Livro não encontrado." });
+    }
+    return res.status(200).json(livro);
+    
+  } catch (error) {
+    return res.status(500).json({ message: "Ocorreu um erro ao buscar o livro." });
+  }
 };
 
 const postLivro = async (req, res) => {

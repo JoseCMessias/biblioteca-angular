@@ -11,7 +11,7 @@ const getIdEditora = async (id) => {
   const editora = await connection.connect();
   const sql = "SELECT * FROM editoras WHERE editora_id=$1";
   const res = await editora.query(sql, [id]);
-  return res.rows;
+  return res.rows[0];
 };
 
 const postEditora = async (editora) => {

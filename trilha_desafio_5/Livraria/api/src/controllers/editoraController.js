@@ -6,8 +6,17 @@ const getAllEditora = async (req, res) => {
 };
 
 const getIdEditora = async (req, res) => {
-  const editora = await editoraService.getIdEditora(req.params.id);
-  return res.json(editora);
+  try {
+    const editora = await editoraService.getIdEditora(req.params.id);
+
+    if (!editora) {
+      return res.status(404).json({ message: "Editora não encontrado." });
+    }
+    return res.status(200).json(editora);
+    
+  } catch (error) {
+    return res.status(500).json({ message: "Ocorreu um erro ao buscar a editora." });
+  }
 };
 
 const postEditora = async (req, res) => {
