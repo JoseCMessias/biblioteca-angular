@@ -1,8 +1,18 @@
 import livroService from "../services/livroService.js";
 
 const getAllLivro = async (req, res) => {
-  const livro = await livroService.getAllLivro();
-  return res.status(200).json(livro);
+  try {
+    const livros = await livroService.getAllLivro();
+
+    if (livros.length === 0) {
+      return res.status(404).json({ message: "Nenhum livro encontrado." });
+    }
+
+    return res.status(200).json(livros);
+  } catch (error) {
+    console.error('Erro ao tentar buscar todos os livros:', error);
+    return res.status(500).json({ message: "Ocorreu um erro ao buscar os livros." });
+  }
 };
 
 const getIdLivro = async (req, res) => {

@@ -1,8 +1,18 @@
 import editoraService from "../services/editoraService.js";
 
 const getAllEditora = async (req, res) => {
-  const editoras = await editoraService.getAllEditora();
-  return res.status(200).json(editoras);
+  try {
+    const editoras = await editoraService.getAllEditora();
+
+    if (editoras.length === 0) {
+      return res.status(404).json({ message: "Nenhum editora encontrado." });
+    }
+
+    return res.status(200).json(editoras);
+  } catch (error) {
+    console.error('Erro ao tentar buscar todas as editoras:', error);
+    return res.status(500).json({ message: "Ocorreu um erro ao buscar as editoras." });
+  }
 };
 
 const getIdEditora = async (req, res) => {

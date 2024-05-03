@@ -1,9 +1,20 @@
 import autorService from "../services/autorService.js";
 
 const getAllAuthor = async (req, res) => {
-  const autore = await autorService.getAllAuthor();
-  return res.status(200).json(autore);
+  try {
+    const autores = await autorService.getAllAuthor();
+
+    if (autores.length === 0) {
+      return res.status(404).json({ message: "Nenhum autor encontrado." });
+    }
+
+    return res.status(200).json(autores);
+  } catch (error) {
+    console.error('Erro ao tentar buscar todos os autores:', error);
+    return res.status(500).json({ message: "Ocorreu um erro ao buscar os autores." });
+  }
 };
+
 
 const getIdAuthor = async (req, res) => {
   try {
