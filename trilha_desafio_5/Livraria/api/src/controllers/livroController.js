@@ -10,8 +10,10 @@ const getAllLivro = async (req, res) => {
 
     return res.status(200).json(livros);
   } catch (error) {
-    console.error('Erro ao tentar buscar todos os livros:', error);
-    return res.status(500).json({ message: "Ocorreu um erro ao buscar os livros." });
+    console.error("Erro ao tentar buscar todos os livros:", error);
+    return res
+      .status(500)
+      .json({ message: "Ocorreu um erro ao buscar os livros." });
   }
 };
 
@@ -23,9 +25,10 @@ const getIdLivro = async (req, res) => {
       return res.status(404).json({ message: "Livro não encontrado." });
     }
     return res.status(200).json(livro);
-    
   } catch (error) {
-    return res.status(500).json({ message: "Ocorreu um erro ao buscar o livro." });
+    return res
+      .status(500)
+      .json({ message: "Ocorreu um erro ao buscar o livro." });
   }
 };
 

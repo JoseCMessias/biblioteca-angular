@@ -10,8 +10,10 @@ const getAllEditora = async (req, res) => {
 
     return res.status(200).json(editoras);
   } catch (error) {
-    console.error('Erro ao tentar buscar todas as editoras:', error);
-    return res.status(500).json({ message: "Ocorreu um erro ao buscar as editoras." });
+    console.error("Erro ao tentar buscar todas as editoras:", error);
+    return res
+      .status(500)
+      .json({ message: "Ocorreu um erro ao buscar as editoras." });
   }
 };
 
@@ -23,9 +25,10 @@ const getIdEditora = async (req, res) => {
       return res.status(404).json({ message: "Editora não encontrado." });
     }
     return res.status(200).json(editora);
-    
   } catch (error) {
-    return res.status(500).json({ message: "Ocorreu um erro ao buscar a editora." });
+    return res
+      .status(500)
+      .json({ message: "Ocorreu um erro ao buscar a editora." });
   }
 };
 
