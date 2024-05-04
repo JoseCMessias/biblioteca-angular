@@ -1,4 +1,5 @@
-import livroService from "../services/livroService.js";
+import livroService from "../models/services/livroService.js";
+import isValidDados from "../models/validations/validaDados.js";
 
 const getAllLivro = async (req, res) => {
   try {
@@ -33,18 +34,78 @@ const getIdLivro = async (req, res) => {
 };
 
 const postLivro = async (req, res) => {
-  await livroService.postLivro(req.body);
-  return res.sendStatus(201);
+  try {
+    if (Object.keys(req.body).length === 0) {
+      return res
+        .status(400)
+        .json({ message: "Os dados do livro não foram fornecidos." });
+    }
+
+    if (!isValidDados.isValidDadosLivros(req.body)) {
+      return res
+        .status(400)
+        .json({ message: "Os dados do livro são inválidos." });
+    }
+
+    const existeLivro = await livroService.getLivroByTitulo(
+      req.body.titulo.trim()
+    );
+    if (existeLivro) {
+      return res
+        .status(400)
+        .json({ message: "Este livro já está cadastrada." });
+    }
+
+    await livroService.postLivro(req.body);
+
+    return res.sendStatus(201);
+  } catch (error) {
+    console.error("Erro ao tentar adicionar livro:", error);
+    return res.status(500).json({ error: "Erro interno do servidor" });
+  }
 };
 
 const patchLivro = async (req, res) => {
-  await livroService.patchLivro(req.params.id, req.body);
-  return res.sendStatus(200);
+  try {
+    if (Object.keys(req.body).length === 0) {
+      return res
+        .status(400)
+        .json({ message: "Os dados da livro não foram fornecidos." });
+    }
+
+    if (!isValidDados.isValidDadosLivros(req.body)) {
+      return res
+        .status(400)
+        .json({ message: "Os novos dados do livro são inválidos." });
+    }
+
+    const existeLivro = await livroService.getIdLivro(req.params.id);
+    if (!existeLivro) {
+      return res.status(404).json({ message: "Livro não encontrado." });
+    }
+
+    await livroService.patchLivro(req.params.id, req.body);
+
+    return res.sendStatus(200);
+  } catch (error) {
+    console.error("Erro ao tentar atualizar livro:", error);
+    return res.status(500).json({ error: "Erro interno do servidor" });
+  }
 };
 
 const deleteLivro = async (req, res) => {
-  await livroService.deleteLivro(req.params.id);
-  return res.sendStatus(204);
+  try {
+    const existeLivro = await livroService.getIdLivro(req.params.id);
+    if (!existeLivro) {
+      return res.status(404).json({ message: "Livro não encontrado." });
+    }
+
+    await livroService.deleteLivro(req.params.id);
+    return res.status(200).json({ message: "Livro deletado com sucesso." });
+  } catch (error) {
+    console.error("Erro ao tentar excluir livro:", error);
+    return res.status(500).json({ error: "Erro interno do servidor" });
+  }
 };
 
 export default {

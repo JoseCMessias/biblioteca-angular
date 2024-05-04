@@ -1,4 +1,5 @@
-import autorService from "../services/autorService.js";
+import autorService from "../models/services/autorService.js";
+import isValidDados from "../models/validations/validaDados.js";
 
 const getAllAuthor = async (req, res) => {
   try {
@@ -33,18 +34,78 @@ const getIdAuthor = async (req, res) => {
 };
 
 const postAuthor = async (req, res) => {
-  await autorService.postAuthor(req.body);
-  return res.sendStatus(201);
+  try {
+    if (Object.keys(req.body).length === 0) {
+      return res
+        .status(400)
+        .json({ message: "Os dados do autor não foram fornecidos." });
+    }
+
+    const reqBodyNome = req.body.nome.trim();
+
+    if (!isValidDados.isValidDadosAutor(req.body)) {
+      return res
+        .status(400)
+        .json({ message: "Os dados do autor são inválidos." });
+    }
+
+    const existeAuthor = await autorService.getAuthorByName(reqBodyNome);
+    if (existeAuthor) {
+      return res
+        .status(400)
+        .json({ message: "Este autor já está cadastrado." });
+    }
+
+    await autorService.postAuthor(req.body);
+
+    return res.sendStatus(201);
+  } catch (error) {
+    console.error("Erro ao tentar adicionar autor:", error);
+    return res.status(500).json({ error: "Erro interno do servidor" });
+  }
 };
 
 const patchAuthor = async (req, res) => {
-  await autorService.patchAuthor(req.params.id, req.body);
-  return res.sendStatus(200);
+  try {
+    if (Object.keys(req.body).length === 0) {
+      return res
+        .status(400)
+        .json({ message: "Os dados do autor não foram fornecidos." });
+    }
+
+    if (!isValidDados.isValidDadosAutor(req.body)) {
+      return res
+        .status(400)
+        .json({ message: "Os novos dados do autor são inválidos." });
+    }
+
+    const existingAuthor = await autorService.getIdAuthor(req.params.id);
+    if (!existingAuthor) {
+      return res.status(404).json({ message: "Autor não encontrado." });
+    }
+
+    await autorService.patchAuthor(req.params.id, req.body);
+
+    return res.sendStatus(200);
+  } catch (error) {
+    console.error("Erro ao tentar atualizar autor:", error);
+    return res.status(500).json({ error: "Erro interno do servidor" });
+  }
 };
 
 const deleteAuthor = async (req, res) => {
-  await autorService.deleteAuthor(req.params.id);
-  return res.sendStatus(204);
+  try {
+    const existeAuthor = await autorService.getIdAuthor(req.params.id);
+    if (!existeAuthor) {
+      return res.status(404).json({ message: "Autor não encontrado." });
+    }
+
+    await autorService.deleteAuthor(req.params.id);
+    return res.status(200).json({ message: "Autor deletado com sucesso." });
+  } catch (error) {
+    console.error("Erro ao tentar excluir autor:", error);
+    return res.status(500).json({ error: "Erro interno do servidor" });
+  }
 };
 
 export default {
