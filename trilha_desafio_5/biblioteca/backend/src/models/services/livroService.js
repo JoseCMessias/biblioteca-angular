@@ -14,8 +14,7 @@ const getIdLivro = async (id) => {
 
 const getLivroByTitulo = async (nome) => {
   const sql = "SELECT * FROM livros WHERE titulo = $1";
-  const values = [nome];
-  const result = connection.query(sql, values);
+  const result = await connection.query(sql, [nome]);
   return result.rows[0];
 };
 
@@ -28,7 +27,7 @@ const postLivro = async (livro) => {
     livro.editora_id_fk,
     livro.ano_publicado,
   ];
-  connection.query(sql, values);
+  await connection.query(sql, values);
 };
 
 const patchLivro = async (id, livro) => {
