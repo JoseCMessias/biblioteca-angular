@@ -42,16 +42,13 @@ const postEditora = async (req, res) => {
         .json({ message: "Os dados da editora não foram fornecidos." });
     }
 
-    const reqBodyNome = req.body.nome;
-    req.body.localizacao = req.body.localizacao;
-
     if (!isValidDados.isValidDadosEditora(req.body)) {
       return res
         .status(400)
         .json({ message: "Os dados da editora são inválidos." });
     }
 
-    const existeEditora = await editoraService.getEditoraByName(reqBodyNome);
+    const existeEditora = await editoraService.getEditoraByName(req.body.nome);
     if (existeEditora) {
       return res
         .status(409)
