@@ -2,8 +2,13 @@ import Router from "express";
 import autorController from "../controllers/autorController.js";
 import editoraController from "../controllers/editoraController.js";
 import livroController from "../controllers/livroController.js";
+import listarTodosController from "../controllers/listarTodosController.js";
 
 const router = Router();
+
+router
+  .route('/')
+  .get(listarTodosController.getByAll);
 
 router
   .route("/autores")
