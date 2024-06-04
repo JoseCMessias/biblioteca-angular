@@ -3,12 +3,11 @@ import autorController from "../controllers/autorController.js";
 import editoraController from "../controllers/editoraController.js";
 import livroController from "../controllers/livroController.js";
 import listarTodosController from "../controllers/listarTodosController.js";
+import usuariosController from "../controllers/usuariosController.js";
 
 const router = Router();
 
-router
-  .route('/')
-  .get(listarTodosController.getByAll);
+router.route("/").get(listarTodosController.getByAll);
 
 router
   .route("/autores")
@@ -29,7 +28,7 @@ router
   .get(editoraController.getIdEditora)
   .patch(editoraController.patchEditora)
   .delete(editoraController.deleteEditora);
-  
+
 router
   .route("/livros")
   .get(livroController.getAllLivro)
@@ -39,5 +38,13 @@ router
   .get(livroController.getIdLivro)
   .patch(livroController.patchLivro)
   .delete(livroController.deleteLivro);
+
+router
+  .route("/usuarios")
+  .get(usuariosController.getAllUsuario)
+  .post(usuariosController.postUsuario);
+router
+  .route("/usuarios/:id")
+  .get(usuariosController.getIdUsuario);
 
 export default router;

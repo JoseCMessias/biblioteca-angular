@@ -54,8 +54,23 @@ const isValidDadosLivros = (dado) => {
   return true;
 };
 
+const isValidDadosUsuario = (dado) => {
+  const keysToValidate = ["nome", "email", "senha"];
+  for (const key of keysToValidate) {
+    if (
+      !dado[key] ||
+      typeof dado[key] !== "string" ||
+      dado[key].trim().length < 3
+    ) {
+      return false;
+    }
+  }
+  return true;
+};
+
 export default {
   isValidDadosAutor,
   isValidDadosEditora,
   isValidDadosLivros,
+  isValidDadosUsuario
 };
