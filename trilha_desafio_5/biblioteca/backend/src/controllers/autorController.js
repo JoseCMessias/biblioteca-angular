@@ -42,13 +42,9 @@ const postAuthor = async (req, res) => {
         .json({ message: "Os dados do autor não foram fornecidos." });
     }
 
-    if (!isValidDados.isValidDadosAutor(req.body)) {
-      return res
-        .status(400)
-        .json({ message: "Os dados do autor são inválidos." });
-    }
+    const nome = req.body.nome.trim();
 
-    const existeAuthor = await autorService.getAuthorByName(req.body.nome);
+    const existeAuthor = await autorService.getAuthorByName(nome);
     if (existeAuthor) {
       return res
         .status(409)

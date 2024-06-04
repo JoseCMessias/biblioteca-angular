@@ -48,7 +48,9 @@ const postEditora = async (req, res) => {
         .json({ message: "Os dados da editora são inválidos." });
     }
 
-    const existeEditora = await editoraService.getEditoraByName(req.body.nome);
+    const nome = req.body.nome.trim();
+
+    const existeEditora = await editoraService.getEditoraByName(nome);
     if (existeEditora) {
       return res
         .status(409)

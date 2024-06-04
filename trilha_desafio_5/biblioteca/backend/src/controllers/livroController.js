@@ -47,9 +47,9 @@ const postLivro = async (req, res) => {
         .json({ message: "Os dados do livro são inválidos." });
     }
 
-    const existeLivro = await livroService.getLivroByTitulo(
-      req.body.titulo.trim()
-    );
+    const titulo = req.body.titulo.trim()
+
+    const existeLivro = await livroService.getLivroByTitulo(titulo);
     if (existeLivro) {
       return res
         .status(409)
