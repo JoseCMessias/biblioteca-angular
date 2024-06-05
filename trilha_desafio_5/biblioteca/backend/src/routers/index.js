@@ -41,10 +41,10 @@ router
 
 router
   .route("/usuarios")
-  .get(usuariosController.getAllUsuario)
   .post(usuariosController.postUsuario);
 router
-  .route("/usuarios/:id")
-  .get(usuariosController.getIdUsuario);
+  .route('/usuarios/login')
+  .post(usuariosController.postLogin);
+
 
 export default router;

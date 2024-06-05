@@ -1,55 +1,27 @@
 import usuarioService from "../models/services/usuarioService.js";
 import isValidDados from "../models/services/validations/validaDados.js";
 
-const getAllUsuario = async (req, res) => {
+const postLogin = async (req, res) => {
   try {
-    const usuarios = await usuarioService.getAllUsuario();
+    const { email, senha } = req.body;
 
-    if (usuarios.length === 0) {
-      return res.status(204).json({ message: "Nenhum usuario encontrado." });
+    if (!email || !senha) {
+      return res.status(400).json({ message: "Email e senha são obrigatórios." });
     }
 
-    return res.status(200).json(usuarios);
-  } catch (error) {
-    console.error("Erro ao tentar buscar todos os usuarios:", error);
-    return res
-      .status(500)
-      .json({ message: "Ocorreu um erro ao buscar os usuarios." });
-  }
-};
-
-const getIdUsuario = async (req, res) => {
-  try {
-    const usuario = await usuarioService.getIdUsuario(req.params.id);
+    const usuario = await usuarioService.postLogin(email, senha);
 
     if (!usuario) {
-      return res.status(404).json({ message: "Usuário não encontrado." });
+      return res.status(401).json({ message: "Credenciais inválidas." });
     }
 
-    return res.status(200).json(usuario);
+    return res.status(200).json({ message: "Login realizado com sucesso", usuario });
   } catch (error) {
-    return res
-      .status(500)
-      .json({ message: "Ocorreu um erro ao buscar o usuário." });
+    console.error("Erro ao tentar logar usuario:", error);
+    return res.status(500).json({ error: "Erro interno do servidor" });
   }
 };
-
-const getUsuarioByEmail = async (req, res) => {
-  try {
-    const usuario = await usuarioService.getUsuarioByEmail(req.params.email);
-
-    if (!usuario) {
-      return res.status(404).json({ message: "Usuário não encontrado." });
-    }
-
-    return res.status(200).json(usuario);
-  } catch (error) {
-    return res
-      .status(500)
-      .json({ message: "Ocorreu um erro ao buscar o usuário." });
-  }
-};
-
+ 
 const postUsuario = async (req, res) => {
   try {
     if (Object.keys(req.body).length === 0) {
@@ -82,8 +54,6 @@ const postUsuario = async (req, res) => {
 };
 
 export default {
-  getAllUsuario,
-  getIdUsuario,
-  getUsuarioByEmail,
   postUsuario,
+  postLogin
 };
