@@ -1,0 +1,17 @@
+<div class="car-form-container">
+    <mat-card class="card-crud">
+        <form class="button-crud">
+            <mat-card-title class="title-card-form">Novo Autor</mat-card-title>
+            <mat-form-field class="card-form-input">
+                <mat-label>Nome do autor</mat-label>
+                <input required matInput placeholder="Ex: Fulano de Tal" 
+                [(ngModel)]="autor.nome" name="nome">
+            </mat-form-field>
+            <br/>
+        </form>
+        <div class="button-form">
+            <button class="button-salvar" mat-raised-button (click)="createAutor()">Salvar</button>
+            <button class="button-calcelar" mat-raised-button (click)="cancel()">Cancelar</button>
+        </div>
+    </mat-card>
+</div>

@@ -1,0 +1,19 @@
+<header class="header">
+    <div class="logo-tema">
+        <span>
+            <a>
+                <img class="logo" src="assets/img/logo.png" alt="logo">
+            </a>
+        </span>
+        <span class="title-group">
+            <a>
+                Biblioteca
+            </a>
+        </span>
+    </div>
+    <span class="logout" *ngIf="isUsuarioLogado()">
+        <a (click)="logout()">
+            logout
+        </a>
+    </span>
+</header>

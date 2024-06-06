@@ -1,0 +1,23 @@
+<div class="car-form-container">
+    <mat-card class="card-crud">
+        <form class="button-crud">
+            <mat-card-title class="title-card-form">Nova Editora</mat-card-title>
+            <mat-form-field class="card-form-input">
+                <mat-label>Nome da Editora</mat-label>
+                <input required matInput placeholder="Ex: Grupo Editorial Record" 
+                [(ngModel)]="editora.nome" name="nome">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Endereço da editora</mat-label>
+                <input required matInput placeholder="Ex: Recife" 
+                [(ngModel)]="editora.localizacao" name="localizacao">
+            </mat-form-field>
+            <br/>
+        </form>
+        <div class="button-form">
+            <button class="button-salvar" mat-raised-button (click)="createEditora()">Salvar</button>
+            <button class="button-calcelar" mat-raised-button (click)="cancel()">Cancelar</button>
+        </div>
+    </mat-card>
+</div>
+

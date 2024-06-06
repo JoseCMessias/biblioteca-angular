@@ -1,0 +1,43 @@
+<div class="card-form-container">
+    <mat-card class="card-login">
+        <form class="form-login" #form="ngForm" (ngSubmit)="onSubmit(form)">
+            <mat-card-title class="title-card-login">Cada<span>stro</span> </mat-card-title>
+
+            <mat-form-field class="card-form-input">
+                <mat-label>Digite seu nome</mat-label>
+                <input matInput [(ngModel)]="usuario.nome" name="nome" #nome="ngModel" required placeholder="Ex: Fulano de Tal">
+                <mat-error *ngIf="nome.invalid && nome.touched">
+                    {{ nome.hasError('required') ? 'Você deve inserir o seu nome' : '' }}
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="card-form-input">
+                <mat-label>Digite o seu email</mat-label>
+                <input matInput [(ngModel)]="usuario.email" name="email" #email="ngModel" required email
+                    placeholder="fulano@gmail.com" (blur)="updateErrorMessage(email)">
+                <mat-error *ngIf="email.invalid && email.touched">
+                    {{ errorMessage }}
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="card-form-input">
+                <mat-label>Digite sua senha</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="usuario.senha" name="senha"
+                    #senha="ngModel" required >
+                <button mat-icon-button matSuffix type="button" (click)="clickEvent($event)"
+                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+                </button>
+                <mat-error *ngIf="senha.invalid && senha.touched">
+                    {{ senha.hasError('required') ? 'Você deve inserir a sua senha' : '' }}
+                </mat-error>
+            </mat-form-field>
+            <br />
+            <div class="button-login">
+                <button type="submit" class="button-salvar" mat-raised-button
+                    [disabled]="form.invalid">Cadastrar</button>
+                <button type="button" (click)="login()" class="button-calcelar" mat-raised-button>Voltar</button>
+            </div>
+        </form>
+    </mat-card>
+</div>

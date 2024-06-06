@@ -1,0 +1,67 @@
+.card-form-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10%;
+    height: 100%;
+    background-color: white;
+}
+
+.card-form-container .title-card-login {
+    margin-bottom: 50px;
+    font-size: 30px;
+    color: green;
+    font-weight: bold;
+}
+
+.title-card-login span {
+    color: rgb(219, 184, 56);
+}
+
+.form-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-login .card-form-input {
+    width: 500px;
+}
+
+.card-form-container .card-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.button-login {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.button-login button {
+    margin-top: 50px;
+    width: 200px;
+    font-weight: bold;
+    font-size: 15px;
+    color: white;
+}
+
+.button-login .button-salvar {
+    background-color: green;
+}
+
+.button-login .button-calcelar {
+    background-color: rgb(219, 184, 56);
+}
+
+.mat-mdc-card {
+    box-shadow: none !important;
+}

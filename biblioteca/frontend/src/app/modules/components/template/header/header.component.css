@@ -1,0 +1,76 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background: #e8ebee;
+    height: 10%;
+}
+
+.logo-tema {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.logo-tema a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.header .logo-tema .logo {
+    max-width: 100px;
+    margin: 10px;
+    padding-left: 10px;
+}
+
+.header .logo-tema .title-group {
+    padding-left: 15px;
+    font-size: 23px;
+}
+
+.logout {
+    padding-right: 2%;
+}
+
+.logout a{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    padding-right: 5px;
+    color: black;
+    transition: 1s;
+    text-decoration: none;
+    gap: 10px;
+}
+
+.title-group a {
+    gap: 10px;
+}
+
+.title-group a span {
+    color: rgb(10, 99, 134);
+}
+
+.header .logo-tema .title-group a {
+    color: rgb(207, 169, 45);
+    font-weight: 500;
+}
+
+.header .logo-tema .title-group i {
+    padding-right: 10px;
+}
+
+.header .logo-tema i {
+    color: green;
+}
+
+.logout a:hover {
+    color: rgb(182, 5, 5);
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 20px;
+}

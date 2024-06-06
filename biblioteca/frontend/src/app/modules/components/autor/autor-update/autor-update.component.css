@@ -1,0 +1,35 @@
+.car-form-container {
+  padding: 20px;
+}
+
+.car-form-container .title-card-form {
+  padding-bottom: 20px;
+  color: green;
+}
+
+.car-form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-crud {
+  padding: 20px;
+}
+
+.button-form {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.car-form-container .button-salvar {
+  background-color: green;
+  color: #fff;
+  width: 90px;
+}
+
+.car-form-container .button-calcelar {
+  background-color: rgb(228, 116, 31);
+  color: #fff;
+  width: 90px;
+}

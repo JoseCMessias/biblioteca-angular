@@ -1,0 +1,39 @@
+<div class="car-form-container">
+    <mat-card class="card-crud">
+        <form class="button-crud">
+            <mat-card-title class="title-card-form">Novo Livro</mat-card-title>
+            <mat-form-field class="card-form-input">
+                <mat-label>Título do livro</mat-label>
+                <input required matInput [(ngModel)]="livros.titulo" name="titulo" placeholder="Ex: Pai Rico, Pai Pobre">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Nome do Autor</mat-label>
+                <mat-select [(ngModel)]="livros.autor_id_fk" name="autor_id_fk" >
+                    <mat-option *ngFor="let autor of autores" [value]="autor.autor_id">
+                        {{autor.nome}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Nome da Editora</mat-label>
+                <mat-select [(ngModel)]="livros.editora_id_fk" name="editora_id_fk">
+                    <mat-option *ngFor="let editora of editoras" [value]="editora.editora_id" >
+                        {{editora.nome}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Ano de publicação</mat-label>
+                <input required matInput type="number" placeholder="Ex: 2024"
+                    [(ngModel)]="livros.ano_publicado" name="ano_publicado">
+            </mat-form-field>
+        </form>
+        <div class="button-form">
+            <button class="button-salvar" mat-raised-button (click)="createLivro()">Salvar</button>
+            <button class="button-cancel" mat-raised-button (click)="cancel()">Cancelar</button>
+        </div>
+    </mat-card>
+</div>

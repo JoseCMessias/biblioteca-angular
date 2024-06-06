@@ -1,0 +1,43 @@
+<table mat-table [dataSource]="combinedData" class="mat-elevation-z8">
+  
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="titulo">
+      <th mat-header-cell *matHeaderCellDef> Título </th>
+      <td mat-cell *matCellDef="let row"> {{row.titulo}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="autor_nome">
+      <th mat-header-cell *matHeaderCellDef> Autor </th>
+      <td mat-cell *matCellDef="let row"> {{row.autor_nome}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="editora_nome">
+      <th mat-header-cell *matHeaderCellDef> Editora </th>
+      <td mat-cell *matCellDef="let row"> {{row.editora_nome}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="ano_publicado">
+      <th mat-header-cell *matHeaderCellDef> Ano Publicado </th>
+      <td mat-cell *matCellDef="let row"> {{row.ano_publicado}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef> Ação </th>
+      <td mat-cell *matCellDef="let row" class="acoes-crud">
+        <a routerLink="update/{{ row.id }}" class="editar">
+            <button>Editar</button>
+          </a>
+          <a routerLink="delete/{{ row.id }}" class="deletar">
+            <button>Deletar</button>
+          </a>
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  

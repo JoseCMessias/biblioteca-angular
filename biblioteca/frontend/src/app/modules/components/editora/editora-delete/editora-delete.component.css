@@ -1,0 +1,39 @@
+.card-container {
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-crud {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 20%;
+  padding: 40px;
+  background-color: #ffffff;
+}
+
+.card-crud strong {
+  color:  rgb(228, 116, 31);
+}
+
+.button {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.card-container .button-salvar {
+  background-color: rgb(228, 116, 31);
+  color: #fff;
+  width: 90px;
+}
+
+.card-container .button-calcelar {
+  background-color: green;
+  color: #fff;
+  width: 90px;
+}
