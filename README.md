@@ -3,5 +3,5 @@
 </BR></BR>
 <p>Sistema de Cadastro de uma Biblioteca</p>
 
-## Sobre &#128161; 
+## Sobre
 Desenvolvimento de um sistema completo CRUD para gerenciamento de autores, editoras e livros em uma biblioteca. Esta aplicação abrange as tecnologias Angular para o frontend, Node.js para o backend e PostgreSQL para o banco de dados.
