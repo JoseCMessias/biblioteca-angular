@@ -9,7 +9,7 @@ Desenvolvimento de um sistema completo CRUD para gerenciamento de autores, edito
 ## Tecnologias
 
 - [Angular](https://angular.dev/)
-- [NodeJs](https://nodejs.org/en/about)
+- [NodeJs](https://nodejs.org/en)
 - [Postgresql](https://www.postgresql.org/)
 - [Visual Studio Code](https://code.visualstudio.com)
 
