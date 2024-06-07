@@ -40,7 +40,7 @@ export class CadastroComponent {
         .pipe(
           catchError(() => {
             this.usuarioService.showMessage(
-              `Já existe um usuário cadastrado com esse e-mail`
+              `Ocorreu um erro, tente mais tarde`
             );
             return throwError(() => new Error(`Erro ao criar usuario`));
           })
@@ -60,6 +60,8 @@ export class CadastroComponent {
   }
 
   login() {
-    this.router.navigate(["/login"]);
+    this.router.navigate(['/login']).then(() => {
+      window.location.reload();
+    });
   }
 }

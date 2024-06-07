@@ -13,8 +13,9 @@ export class HeaderComponent {
 
   logout(): void {
     this.usuarioService.logout();
-    this.router.navigate(["/login"]);
-    window.location.reload();
+    this.router.navigate(['/login']).then(() => {
+      window.location.reload();
+    });
   }
 
   isUsuarioLogado(): boolean { 

@@ -36,9 +36,11 @@ export class LoginComponent {
           })
         )
         .subscribe({
-          next: (response) => {
+          next: () => {
             this.loginVerified.toggleVerifiedUser();
-            this.router.navigate(["/"]);
+            this.router.navigate(['/']).then(() => {
+              window.location.reload();
+            });
           },
           error: (error) => {
             console.error(error);
