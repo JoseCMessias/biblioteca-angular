@@ -21,3 +21,11 @@ Função basica da aplicação:
 - Listagem de autores, editoras e livros
 - Edição de dados de autores, editoras e livros
 - Exclusão de autores, editoras e livros
+
+## Sistema em Funcionamento
+
+https://github.com/user-attachments/assets/7f4e38c0-404f-4300-aaa9-a6e37720202e
+
+
+
+
