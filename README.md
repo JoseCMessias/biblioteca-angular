@@ -4,7 +4,7 @@
 <p>Sistema de Cadastro de uma Biblioteca</p>
 
 ## Sobre
-Desenvolvimento de um sistema completo CRUD para gerenciamento de autores, editoras e livros em uma biblioteca. Esta aplicação abrange as tecnologias Angular para o frontend, Node.js para o backend e PostgreSQL para o banco de dados.
+Desenvolvimento de um sistema completo CRUD para gerenciamento de autores, editoras e livros em uma biblioteca. Esta aplicação abrange as tecnologias Angular para o Front-end, Node.js para o Back-end e PostgreSQL para o Banco de Dados.
 
 ## Tecnologias
 
